@@ -5,7 +5,7 @@ from grue_engine import GrueEngine
 
 def list_available_games():
     """Find all available game modules in the games directory."""
-    # In a real implementation, this would scan the directory
+    # In a real implementation, this wou2ld scan the directory
     # For our demo, we'll return a hardcoded list
     return [
         {"id": "crystalia_manor", "title": "Crystalia Manor", "description": "Explore a mysterious abandoned mansion"},

@@ -1,39 +1,30 @@
-# Grue Text Adventure Engine - Main Game Launcher
-import importlib
+# Import the game engine
 from grue_engine import GrueEngine
 
+# Direct imports of game modules
+import crystalia_manor
+import dark_dungeon
 
-def list_available_games():
-    """Find all available game modules in the games directory."""
-    # In a real implementation, this wou2ld scan the directory
-    # For our demo, we'll return a hardcoded list
-    return [
-        {"id": "crystalia_manor", "title": "Crystalia Manor", "description": "Explore a mysterious abandoned mansion"},
-        {"id": "dark_dungeon", "title": "Dark Dungeon", "description": "Escape from a dangerous underground prison"}
-    ]
-
-
-def load_game_module(game_id):
-    """Dynamically import a game module."""
-    try:
-        # In a real implementation, you'd import from a games subdirectory
-        game_module = importlib.import_module(game_id)
-        return game_module
-    except ImportError as e:
-        print(f"Error loading game module: {e}")
-        return None
+# Dictionary mapping game IDs to modules
+GAMES = {
+    "crystalia_manor": crystalia_manor,
+    "dark_dungeon": dark_dungeon
+}
 
 
 def display_game_menu():
     """Display a menu of available games."""
-    games = list_available_games()
+    game_selection = [
+        {"id": "crystalia_manor", "title": "Crystalia Manor", "description": "Explore a mysterious abandoned mansion"},
+        {"id": "dark_dungeon", "title": "Dark Dungeon", "description": "Escape from a dangerous underground prison"}
+    ]
 
     print("\nGrue - Text Adventure Engine")
     print("=========================")
     print("Available Adventures:")
     print()
 
-    for i, game in enumerate(games, 1):
+    for i, game in enumerate(game_selection, 1):
         print(f"{i}. {game['title']}")
         print(f"   {game['description']}")
         print()
@@ -48,8 +39,8 @@ def display_game_menu():
                 return None
 
             choice = int(choice) - 1
-            if 0 <= choice < len(games):
-                return games[choice]["id"]
+            if 0 <= choice < len(game_selection):
+                return game_selection[choice]["id"]
             else:
                 print("Invalid selection. Please try again.")
         except ValueError:
@@ -68,10 +59,7 @@ def main():
             break
 
         # Load the selected game module
-        game_module = load_game_module(selected_game_id)
-        if not game_module:
-            print("Failed to load the selected game. Please try another.")
-            continue
+        game_module = GAMES[selected_game_id]
 
         # Create and run the game engine with the selected game
         engine = GrueEngine()

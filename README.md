@@ -1,7 +1,7 @@
 # Grue - Interactive Engine
 ## Game Module Format Documentation
 
-The Grue Text Adventure Engine is designed to be data-driven, allowing you to create multiple adventure games using the same engine. Each game is defined as a Python module that contains specific data structures. This document explains how to create your own game modules.
+The Grue Interactive Engine is designed to be data-driven, allowing you to create multiple adventure games using the same engine. Each game is defined as a Python module that contains specific data structures. This document explains how to create your own game modules.
 
 ## Overview
 
@@ -315,4 +315,4 @@ These limitations can be addressed by extending the engine as your programming s
 
 ---
 
-Happy adventuring with the Grue - Text Adventure Engine! Just remember: it's dangerous to go alone in dark places - you might be eaten by a grue!
+Happy adventuring with the Grue - Interactive Engine! Just remember: it's dangerous to go alone in dark places - you might be eaten by a grue!
